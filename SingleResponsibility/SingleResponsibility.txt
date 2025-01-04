@@ -1,3 +1,7 @@
-The Single Responsibility Principle (SRP) declares that a class should have only one reason to change. This means that a class should only focus on doing only one thing. 
-One of its important features is project maintainability, which reduces the likelihood of bugs when modular and reusable code is protected within its own class. 
-This allows for better scalability when working with larger projects. Small businesses could benefit from SRP principles by using concise code to reduce errors, improve scalability and cause less headaches.
+The Single Responsibility Principle (SRP) declares that a class should have only one reason to change. This means that a class should only focus on doing only one thing. One of its important features is project maintainability, which reduces the likelihood of bugs when modular and reusable code is protected within its own class. This allows for better scalability when working with larger projects. Small businesses could benefit from SRP principles by using concise code to reduce errors, improve scalability and cause fewer headaches.
+
+This small project demonstrates how each class is focused on a single responsibility. The Product class is used for managing product properties, Customer for managing customer details, and Transactions for handling purchases.
+
+Each is only loosely connected to others. Modifying the behaviour of one class, such as PrintReceipt, does not affect how the other classes function because this class handles one responsibility only (printing receipts). When independent, this makes maintenance much easier.
+
+Their roles as classes are clearly defined based on their methods. The CustomerManager class is strictly for attending to matters related to the customer, while the InventoryUI is strictly for displaying the inventory. Delegating tasks to dedicated classes ensures the modularity of code while maintaining clarity. 
