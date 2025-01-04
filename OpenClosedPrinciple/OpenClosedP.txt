@@ -1,0 +1,15 @@
+The Open-Closed Principle (OCP) declares that classes and functions should be open for extension but closed for modification. 
+This means they should allow their behaviour to be extended with new code rather than modifying existing code. 
+For example, a payment class could be extended to support new forms of payment, such as PayPal, by adding new code without altering the original class that handles methods such as credit card payments. 
+This principle is especially important for small businesses using inventory management systems, as it enables adding new features, like tracking products or implementing discounts, without risking disruptions to core functionality. 
+Systems designed with OCP ensure stability and support scalability as the business grows.
+
+In this demonstration, dynamic discount management in the ProductManager class allows discounts to be applied dynamically by calculating a new price without modifying the product's logic. 
+This helps to improve scalability and abides to OCP by enabling the extension of different types of discounts (such as flat rate or percentage based discounts).
+
+The new ReceiptFormat interface makes printing receipts more modular by abstracting the print logic. 
+When the logical is abstracted, OCP is applied when new receipt formats such as HTML or JSON can be included without modifying the ReceiptPrinter class.
+
+Finally, the Product class is extended to associate products with categories.
+When a product is included in a category, new functionality can be included to filter or search these products. 
+This way of filtering products does not interfere with the ProductManage logic, thus adhering to OCP, and allows easier management of complex inventory systems.
