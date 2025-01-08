@@ -1,0 +1,19 @@
+Factorisation occurs when we split the program into smaller, digestible components. 
+As such, these components have a clear, focused responsibility (SRP) and are designed to be extendable without changing the stable code within each parent class (OCP).
+
+Our project is now divided into separate classes to demonstrate factorisation. 
+In our original code, classes like "Product" and "Transaction" included multiple responsibilities, including managing product details and applying discounts.
+This resulted in tightly coupled logic that could become problematic as the project scales.
+We now factor "Product" to focus only on product properties, and "Discount" encapsulates the discount logic by enabling dynamic discounting without modifying "Product."
+
+The original implementation of receipt generation was also tightly coupled with the transaction logic; adding a new format required altering the stable code.
+To resolve this issue, we abstracted the "ReceiptFormat" class to define a blueprint for all formats.
+The concrete implementations of "TextReceiptFormat" and "HTMLReceiptFormat" extend this blueprint by adding new formats without altering the transaction or receipt printer logic.
+
+Other new implementations include dynamic report generation, where we abstracted a "Report" class to allow for different reports.
+In turn, "InventoryReport" and "SalesReport" extend this blueprint to enable dynamic selection of reports during runtime.
+
+"CustomerManager" now centralises all customer operations, and "PurchaseHistory" encapsulates the transaction records.
+Finally, "InventoryUI" now has the sole responsibility to display the inventory only.
+
+Factorising this program has improved its architecture so it is controllable, cleaner and open to scale.
