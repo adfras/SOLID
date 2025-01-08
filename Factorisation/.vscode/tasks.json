@@ -1,0 +1,46 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-ggdb",
+                "-O2",
+                "-DNDEBUG",
+                "-std=c++23",
+                "-pedantic-errors",
+                "main.cpp",
+                "Category.cpp",
+                "Customer.cpp",
+                "CustomerManager.cpp",
+                "Discount.cpp",
+                "InventoryUI.cpp",
+                "Product.cpp",
+                "ProductManager.cpp",
+                "PurchaseHistory.cpp",
+                "ReceiptFormat.cpp",
+                "Transaction.cpp",
+                "PurchaseHistoryFormatter.cpp",
+                "PlainTextPurchaseHistoryFormatter.cpp",
+                "Program.cpp",
+                "Report.cpp",
+                "SalesReport.cpp",
+                "InventoryReport.cpp",
+                "ReportGenerator.cpp",
+                "-o",
+                "main.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Compile all project files"
+        }
+    ]
+}
