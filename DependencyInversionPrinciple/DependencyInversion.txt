@@ -1,0 +1,3 @@
+The Dependency Inversion Principle (DIP) says high-level modules should depend on abstractions, not concrete details.
+
+This demo introduces a `ProductRepository` interface so that an `InventoryReport` can retrieve product names from either an in-memory list or a database class without modification.
