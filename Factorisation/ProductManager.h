@@ -7,11 +7,12 @@
 #include <vector>
 #include "Product.h"
 #include "Discount.h"
+#include <memory>
 
 class ProductManager {
 private:
-    std::map<int, Product*> products;         // Maps product IDs to products
-    std::map<int, Discount> productDiscounts; // Maps product IDs to discounts
+    std::map<int, Product*> products; // Maps product IDs to products
+    std::map<int, std::unique_ptr<DiscountStrategy>> productDiscounts; // Discounts per product
 
 public:
     // Add a product to the manager
@@ -24,7 +25,7 @@ public:
     std::vector<Product*> getAllProducts() const;
 
     // Set a discount for a product
-    void setDiscount(int product_id, const Discount& discount);
+    void setDiscount(int product_id, std::unique_ptr<DiscountStrategy> discount);
 
     // Get the price of a product after applying its discount
     double getDiscountPrice(int product_id) const;

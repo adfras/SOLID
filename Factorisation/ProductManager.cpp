@@ -3,6 +3,7 @@
 #include "ProductManager.h"
 #include <stdexcept>
 #include <algorithm> // For std::find
+#include <memory>
 
 // ProductManager Class: Handles product operations
 // Adheres to SRP: Focuses only on managing a collection of products (add, update, fetch).
@@ -36,11 +37,11 @@ std::vector<Product*> ProductManager::getAllProducts() const {
 }
 
 // Set a discount for a product
-void ProductManager::setDiscount(int product_id, const Discount& discount) {
+void ProductManager::setDiscount(int product_id, std::unique_ptr<DiscountStrategy> discount) {
     if (products.find(product_id) == products.end()) {
         throw std::invalid_argument("Cannot apply discount: Product not found.");
     }
-    productDiscounts[product_id] = discount;
+    productDiscounts[product_id] = std::move(discount);
 }
 
 // Get the price of a product after applying its discount
@@ -52,8 +53,8 @@ double ProductManager::getDiscountPrice(int product_id) const {
 
     const Product* product = productIter->second;
     auto discountIter = productDiscounts.find(product_id);
-    if (discountIter != productDiscounts.end()) {
-        return discountIter->second.applyDiscount(product->getPrice());
+    if (discountIter != productDiscounts.end() && discountIter->second) {
+        return discountIter->second->apply(product->getPrice());
     }
     return product->getPrice(); // No discount
 }

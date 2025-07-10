@@ -1,5 +1,6 @@
 #include "Program.h"
 #include <iostream>
+#include <memory>
 
 Program::Program(ProductManager& pm, CustomerManager& cm, Transaction& transaction,
                  InventoryUI& inventoryUI, PurchaseHistoryFormatter& purchaseHistoryFormatter,
@@ -54,10 +55,8 @@ void Program::initializeCustomers() {
 void Program::initializeDiscounts() {
     std::cout << "\nInitializing Discounts...\n";
     std::cout << "Adding discounts...\n";
-    Discount percentageDiscount("percentage", 10.0); // 10% discount
-    Discount flatDiscount("flat", 5.0); // $5 discount
-    productManager.setDiscount(101, percentageDiscount); // Apply to laptop
-    productManager.setDiscount(102, flatDiscount);      // Apply to mouse
+    productManager.setDiscount(101, std::make_unique<PercentageDiscount>(10.0)); // 10% discount for laptop
+    productManager.setDiscount(102, std::make_unique<FlatDiscount>(5.0));        // $5 discount for mouse
 }
 
 void Program::processTransactions() {

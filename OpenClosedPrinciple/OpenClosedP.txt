@@ -4,8 +4,7 @@ For example, a payment class could be extended to support new forms of payment, 
 This principle is especially important for small businesses using inventory management systems, as it enables adding new features, like tracking products or implementing discounts, without risking disruptions to core functionality. 
 Systems designed with OCP ensure stability and support scalability as the business grows.
 
-In this demonstration, dynamic discount management in the ProductManager class allows discounts to be applied dynamically by calculating a new price without modifying the product's logic. 
-This helps to improve scalability and abides to OCP by enabling the extension of different types of discounts (such as flat rate or percentage based discounts).
+In this demonstration, dynamic discount management is handled via a `DiscountStrategy` interface. New strategies (such as flat-rate or percentage discounts) can be introduced and injected into the system without changing existing classes. This keeps the product logic closed for modification yet open for extension.
 
 The new ReceiptFormat interface makes printing receipts more modular by abstracting the print logic. 
 When the logical is abstracted, OCP is applied when new receipt formats such as HTML or JSON can be included without modifying the ReceiptPrinter class.
