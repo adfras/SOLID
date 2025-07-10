@@ -4,7 +4,7 @@ As such, these components have a clear, focused responsibility (SRP) and are des
 Our project is now divided into separate classes to demonstrate factorisation. 
 In our original code, classes like "Product" and "Transaction" included multiple responsibilities, including managing product details and applying discounts.
 This resulted in tightly coupled logic that could become problematic as the project scales.
-We now factor "Product" to focus only on product properties, and "Discount" encapsulates the discount logic by enabling dynamic discounting without modifying "Product."
+We now factor "Product" to focus only on product properties, and a `DiscountStrategy` hierarchy encapsulates discount logic. New discounts can be introduced without touching `Product` or `ProductManager`, demonstrating extension without modification.
 
 The original implementation of receipt generation was also tightly coupled with the transaction logic; adding a new format required altering the stable code.
 To resolve this issue, we abstracted the "ReceiptFormat" class to define a blueprint for all formats.
