@@ -1,0 +1,3 @@
+The Liskov Substitution Principle (LSP) states that objects of a base type should be replaceable with objects of derived types without affecting program correctness.
+
+In this example we separate product shipping into a `ShippableProduct` interface. Physical items like books implement it, while digital products only satisfy the basic `Product` interface. Functions written against `Product` work with either kind without forcing digital items to implement meaningless shipping behaviour.

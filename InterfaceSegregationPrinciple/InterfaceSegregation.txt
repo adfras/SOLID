@@ -1,0 +1,3 @@
+The Interface Segregation Principle (ISP) advises using multiple, specific interfaces rather than a single general-purpose one.
+
+Here we split inventory access into `InventoryReader` and `InventoryWriter`. Reporting tools depend only on the reader interface, while the restock service requires both, so each client uses only the methods it needs.

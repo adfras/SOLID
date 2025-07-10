@@ -1,12 +1,18 @@
 # SOLID Demo Project
 
-This repository contains a small C++ program demonstrating the five SOLID principles:
+This repository contains a small C++ program demonstrating the five SOLID principles.  
+The main example lives in the `Factorisation` directory and exercises all of the principles together.  
+Smaller demonstrations for each principle can be found in their own folders.
+
+The principles are:
 
 1. **Single Responsibility** – each class in the `Factorisation` directory handles one focused task. Examples include `Product`, `Customer`, `InventoryUI`, and `Transaction`.
 2. **Open/Closed** – behaviour is extended through abstractions without modifying existing classes. `ReceiptFormat` and the new `DiscountStrategy` hierarchy allow new receipt or discount types to be introduced with no changes to the consumers.
-3. **Liskov Substitution** – objects of `DiscountStrategy` or `ReceiptFormat` derived classes can replace their base classes without side effects.
-4. **Interface Segregation** – small interfaces such as `ReceiptFormat`, `PurchaseHistoryFormatter`, and `Report` expose only the operations a client needs.
-5. **Dependency Inversion** – high level modules depend on abstractions. `Transaction` uses the `ReceiptFormat` interface, while `ProductManager` stores `DiscountStrategy` objects.
+3. **Liskov Substitution** – physical and digital products share a base `Product` interface so either can be used where a product is expected.
+4. **Interface Segregation** – inventory access is split into reader and writer interfaces so clients depend only on what they use.
+5. **Dependency Inversion** – reports obtain products through a `ProductRepository` abstraction, decoupling them from concrete storage.
+
+Demo programs for these principles appear in the `LiskovSubstitutionPrinciple`, `InterfaceSegregationPrinciple` and `DependencyInversionPrinciple` folders using product and inventory examples.
 
 ## Building
 
